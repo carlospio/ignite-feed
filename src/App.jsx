@@ -5,6 +5,56 @@ import { Sidebar } from "./components/Sidebar";
 import "./global.css";
 import styles from "./App.module.css";
 
+// author: {avatar_url: "", name: "", role: ""}
+// publishedAt: Data
+// content: String
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/carlospio.png',
+      name: 'Carlos Pio',
+      role: 'Dev Full Stack'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-09-06 20:56:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://i.pravatar.cc/300',
+      name: 'Luana Lourenço',
+      role: 'Dev Full Stack'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-09-06 20:56:00'),
+  },
+  {
+    id: 3,
+    author: {
+      avatarUrl: 'https://i.pravatar.cc/300',
+      name: 'Gian Alves',
+      role: 'Dev Full Stack'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-09-06 20:56:00'),
+  },
+]
+
+
 export function App() {
   return (
     <div>
@@ -12,15 +62,17 @@ export function App() {
       <div className={styles.wrapper}>
        <Sidebar />
         <main>
-          <Post
-           author="carlos pio" 
-           content="teste props" 
-           />
-
-          <Post 
-          author="pessoa 2" 
-          content="teste props" 
-          />
+          {
+            posts.map(post => {
+              return (
+                <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+              )
+            })
+          }
         </main>
       </div>
     </div>
